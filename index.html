@@ -6,24 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Weather App - Cris</title>
 </head>
 
 <body>
+    <div class="page-header">
+        <h1>Weather Vista</h1>
+        <h2> By: Cris</h2>
+    </div>
 
     <div class="container">
+
         <div class="search-box">
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="text" placeholder="Enter your location">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <input type="text" placeholder=" Enter your location">
             <button class="fa-solid fa-magnifying-glass"></button>
         </div>
 
         <div class="not-found">
             <img src="images/404.png">
-            <p>Oops! Invalid location :/</p>
+            <p>Invalid location</p>
         </div>
 
         <div class="weather-box">
@@ -34,14 +39,14 @@
 
         <div class="weather-details">
             <div class="humidity">
-                <i class="fa-solid fa-water"></i>
+                <i class="fa-solid fa-water fa-fade"></i> 
                 <div class="text">
                     <span></span>
                     <p>Humidity</p>
                 </div>
             </div>
             <div class="wind">
-                <i class="fa-solid fa-wind"></i>
+                <i class="fa-solid fa-wind fa-fade"></i>
                 <div class="text">
                     <span></span>
                     <p>Wind Speed</p>
@@ -51,7 +56,7 @@
 
     </div>
 
-    <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/40779edcf2.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
 
