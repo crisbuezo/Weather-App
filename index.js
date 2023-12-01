@@ -1,18 +1,25 @@
-const container = document.querySelector('.container');
-const search = document.querySelector('.search-box button');
-const weatherBox = document.querySelector('.weather-box');
-const weatherDetails = document.querySelector('.weather-details');
-const error404 = document.querySelector('.not-found');
+const container = document.querySelector('.container'); /* selects the first HTML element with the class name "container" and assigns it to the constant variable container */
+const search = document.querySelector('.search-box button'); /* selects the first HTML element with the class name ".search-box button" and assigns it to the constant variable search */
+const weatherBox = document.querySelector('.weather-box'); /* selects the first HTML element with the class name ".weather-box" and assigns it to the constant variable weatherBox */
+const weatherDetails = document.querySelector('.weather-details'); /* selects the first HTML element with the class name ".weather-details" and assigns it to the constant variable weatherDetails */
+const error404 = document.querySelector('.not-found'); /* selects the first HTML element with the class name ".not-found" and assigns it to the constant variable error404 */
+const searchInput = document.querySelector('.search-box input'); /* making a constant named "search input" but pulling it from the search-box input class*/
 
-search.addEventListener('click', () => {
+search.addEventListener('click', performSearch); /* event listener click and performs the "performSearch" command */
+searchInput.addEventListener('keydown', function (event) { /* event listener keydown and performs the event if i press enter instead of click*/
+    if (event.key === 'Enter') { /*this  'Enter' can be changed to any key. 'Shift' for example. If i press enter then performSearch, the main weather function*/
+        performSearch();
+    }
+});
 
-    const APIKey = '13d372688c0e57bef6b74ffaa39a50cb';
-    const city = document.querySelector('.search-box input').value;
+function performSearch() {
+    const APIKey = '13d372688c0e57bef6b74ffaa39a50cb'; /*constant of the API key, used again below under fetch*/
+    const city = searchInput.value; /* This grabs the city that is input under the .search-box input*/
 
-    if (city === '')
+    if (city === '') 
         return;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`)
         .then(response => response.json())
         .then(json => {
 
@@ -62,7 +69,7 @@ search.addEventListener('click', () => {
             temperature.innerHTML = `${parseInt(json.main.temp)}<span>°</span>`;
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `${json.main.humidity}%`;
-            wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
+            wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
 
             weatherBox.style.display = '';
             weatherDetails.style.display = '';
@@ -71,6 +78,10 @@ search.addEventListener('click', () => {
             container.style.height = '590px';
 
 
+        });
+
+
+};
         });
 
 
